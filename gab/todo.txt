@@ -1,0 +1,8 @@
+
+1. Data download & preprocess
+  COCO image captioning Dataset
+  GloVe
+
+2. decoder LSTM에서 
+ 2.1. input을 <START> token으로 넣어야 하나? (--> COCO Dataset 확인)
+ 2.2. test-gready : output이 <END>일 때 끝내는거 넣어야하나?
