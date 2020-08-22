@@ -89,10 +89,10 @@ def sample(encoder, decoder, vocab, val_loader):
     encoder.batchnorm.eval()
     # run validation set
     images, captions, lengths = next(iter(val_loader))
-    captions = to_var(captions, volatile=True)
+    captions = to_var(captions)
 
     targets = nn.utils.rnn.pack_padded_sequence(captions, lengths, batch_first=True)[0]
-    features = encoder(to_var(images, volatile=True))
+    features = encoder(to_var(images))
 
     # predict
     sampled_ids = decoder.sample(features)
@@ -111,4 +111,4 @@ def sample(encoder, decoder, vocab, val_loader):
 def to_var(x, volatile=False):
     if torch.cuda.is_available():
         x = x.cuda()
-    return Variable(x, volatile=volatile)
+    return x
