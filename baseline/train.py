@@ -154,7 +154,7 @@ def main(args):
                             sampled_ids = sampled_ids.cpu().data.numpy()[0]
                             sentence = utils.convert_back_to_text(
                                 sampled_ids, vocab)
-                            print('Sample:', sentence)
+                            print('\nSample:', sentence)
 
                             true_ids = captions.cpu().data.numpy()[0]
                             sentence = utils.convert_back_to_text(
@@ -164,7 +164,7 @@ def main(args):
                             print('Epoch: {} - Step: {} - Train Loss: {} - Eval Loss: {}'.format(
                                 epoch, step, losses_train[-1], losses_val[-1]))
                     else:
-                        print('Epoch: {} - Step: {} - Train Loss: {}'.format(
+                        print('\nEpoch: {} - Step: {} - Train Loss: {}'.format(
                             epoch, step, losses_train[-1]))
                     encoder.batchnorm.train()
 
@@ -172,7 +172,7 @@ def main(args):
 
                 # Save the models
                 if (step + 1) % save_step == 0:
-                    print('Saving model....')
+                    print('\nSaving model....')
                     utils.save_models(encoder, decoder, optimizer, step,
                                       epoch, losses_train, losses_val, checkpoint_dir)
                     utils.dump_losses(losses_train, losses_val, os.path.join(
